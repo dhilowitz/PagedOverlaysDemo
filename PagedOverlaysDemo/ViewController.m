@@ -74,8 +74,7 @@
         }
         // Show the UIPageViewController
         // Scroll to the appropriate page
-        [_settingsPageViewController setViewControllers:[NSArray arrayWithObject:_page1ViewController] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:nil];
-        _settingsViewControllersCurrentIndex = 0;
+        [self scrollPageViewController:_settingsPageViewController toPageWithIndex:0];
         
     }
 }
@@ -89,16 +88,7 @@
             _settingsPageViewController.view.hidden = NO;
         }
         
-        UIPageViewControllerNavigationDirection direction;
-        
-        if (_settingsViewControllersCurrentIndex == 0) {
-            direction = UIPageViewControllerNavigationDirectionForward;
-        } else {
-            direction = UIPageViewControllerNavigationDirectionReverse;
-        }
-        
-        [_settingsPageViewController setViewControllers:[NSArray arrayWithObject:_page2ViewController] direction:direction animated:YES completion:nil];
-        _settingsViewControllersCurrentIndex = 1;
+        [self scrollPageViewController:_settingsPageViewController toPageWithIndex:1];
     }
 }
 
@@ -111,9 +101,27 @@
             _settingsPageViewController.view.hidden = NO;
         }
         
-        [_settingsPageViewController setViewControllers:[NSArray arrayWithObject:_page3ViewController] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
-        _settingsViewControllersCurrentIndex = 2;
+        [self scrollPageViewController:_settingsPageViewController toPageWithIndex:2];
     }
+}
+
+- (void) scrollPageViewController: (UIPageViewController *) pageViewController
+                  toPageWithIndex: (NSInteger) index
+{
+    if(index == _settingsViewControllersCurrentIndex) return;
+    
+    UIViewController *newUIViewController = [_settingsViewControllers objectAtIndex:index];
+
+    UIPageViewControllerNavigationDirection animationDirection;
+    
+    if (index > _settingsViewControllersCurrentIndex) {
+        animationDirection = UIPageViewControllerNavigationDirectionForward;
+    } else {
+        animationDirection = UIPageViewControllerNavigationDirectionReverse;
+    }
+
+    [_settingsPageViewController setViewControllers:[NSArray arrayWithObject:newUIViewController] direction:animationDirection animated:YES completion:nil];
+    _settingsViewControllersCurrentIndex = index;
 }
 
 #pragma mark - Protocol:
