@@ -17,6 +17,7 @@
     UIViewController *_page1ViewController;
     UIViewController *_page2ViewController;
     UIViewController *_page3ViewController;
+    NSInteger _settingsViewControllersCurrentIndex;
     NSArray *_settingsViewControllers;
 }
 
@@ -51,8 +52,11 @@
     
     _settingsViewControllers = @[_page1ViewController, _page2ViewController, _page3ViewController];
     
+    _settingsViewControllersCurrentIndex = 0;
     [_settingsPageViewController setViewControllers:[NSArray arrayWithObject:_page1ViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-    
+
+    _settingsPageViewController.view.hidden = YES;
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -61,32 +65,74 @@
 }
 
 - (IBAction)page1ButtonTapped:(id)sender {
-    // Show the UIPageViewController
-    // Scroll to the appropriate page
+    if(!_settingsPageViewController.view.hidden && _settingsViewControllersCurrentIndex == 0) {
+        _settingsPageViewController.view.hidden = YES;
+    } else {
+    
+        if(_settingsPageViewController.view.hidden) {
+            _settingsPageViewController.view.hidden = NO;
+        }
+        // Show the UIPageViewController
+        // Scroll to the appropriate page
+        [_settingsPageViewController setViewControllers:[NSArray arrayWithObject:_page1ViewController] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:nil];
+        _settingsViewControllersCurrentIndex = 0;
+        
+    }
 }
 
 - (IBAction)page2ButtonTapped:(id)sender {
+    if(!_settingsPageViewController.view.hidden && _settingsViewControllersCurrentIndex == 1) {
+        _settingsPageViewController.view.hidden = YES;
+    } else {
+        
+        if(_settingsPageViewController.view.hidden) {
+            _settingsPageViewController.view.hidden = NO;
+        }
+        
+        UIPageViewControllerNavigationDirection direction;
+        
+        if (_settingsViewControllersCurrentIndex == 0) {
+            direction = UIPageViewControllerNavigationDirectionForward;
+        } else {
+            direction = UIPageViewControllerNavigationDirectionReverse;
+        }
+        
+        [_settingsPageViewController setViewControllers:[NSArray arrayWithObject:_page2ViewController] direction:direction animated:YES completion:nil];
+        _settingsViewControllersCurrentIndex = 1;
+    }
 }
 
 - (IBAction)page3ButtonTapped:(id)sender {
+    if(!_settingsPageViewController.view.hidden && _settingsViewControllersCurrentIndex == 2) {
+        _settingsPageViewController.view.hidden = YES;
+    } else {
+        
+        if(_settingsPageViewController.view.hidden) {
+            _settingsPageViewController.view.hidden = NO;
+        }
+        
+        [_settingsPageViewController setViewControllers:[NSArray arrayWithObject:_page3ViewController] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+        _settingsViewControllersCurrentIndex = 2;
+    }
 }
 
-#pragma mark - Protocol: 
+#pragma mark - Protocol:
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
-    NSInteger i = [_settingsViewControllers indexOfObject:viewController];
-    if (i > 0) {
-        i--;
-        return _settingsViewControllers[i];
+    _settingsViewControllersCurrentIndex = [_settingsViewControllers indexOfObject:viewController];
+    if (_settingsViewControllersCurrentIndex > 0) {
+        _settingsViewControllersCurrentIndex--;
+        return _settingsViewControllers[_settingsViewControllersCurrentIndex];
     } else {
         return nil;
     }
 }
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
-    NSInteger i = [_settingsViewControllers indexOfObject:viewController];
-    if (i < ([_settingsViewControllers count] - 1)) {
-        return _settingsViewControllers[i + 1];
+    _settingsViewControllersCurrentIndex = [_settingsViewControllers indexOfObject:viewController];
+    if (_settingsViewControllersCurrentIndex < ([_settingsViewControllers count] - 1)) {
+        _settingsViewControllersCurrentIndex++;
+        return _settingsViewControllers[_settingsViewControllersCurrentIndex];
     } else {
         return nil;
     }
