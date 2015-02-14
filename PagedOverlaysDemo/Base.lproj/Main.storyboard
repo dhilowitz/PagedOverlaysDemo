@@ -1,25 +1,150 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L4G-tC-dCe">
+                                <rect key="frame" x="0.0" y="356" width="300" height="44"/>
+                                <items>
+                                    <barButtonItem tag="1" title="Page 1" id="eLj-vJ-PCb">
+                                        <connections>
+                                            <action selector="page1ButtonTapped:" destination="BYZ-38-t0r" id="drp-0k-m1Q"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem tag="2" title="Page 2" id="YQw-KH-Et0">
+                                        <connections>
+                                            <action selector="page2ButtonTapped:" destination="BYZ-38-t0r" id="ZdK-kf-EIS"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem tag="3" title="Page 3" id="xbT-6j-Rt2">
+                                        <connections>
+                                            <action selector="page3ButtonTapped:" destination="BYZ-38-t0r" id="U7D-JI-Ank"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="L4G-tC-dCe" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="9Kk-Tx-MdP"/>
+                            <constraint firstItem="L4G-tC-dCe" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Gkf-tt-zvP"/>
+                            <constraint firstAttribute="trailing" secondItem="L4G-tC-dCe" secondAttribute="trailing" id="uvE-rT-vKb"/>
+                        </constraints>
                     </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="300" height="400"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--Page 1-->
+        <scene sceneID="vwt-02-C6M">
+            <objects>
+                <viewController storyboardIdentifier="Page1ViewController" title="Page 1" id="LCZ-nX-bX7" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bta-oD-NcR"/>
+                        <viewControllerLayoutGuide type="bottom" id="sFi-jc-fzY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6ca-XC-YJ1">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="400"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Page 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mnb-ie-hyi">
+                                <rect key="frame" x="116" y="186" width="68" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.80000000000000004" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="mnb-ie-hyi" secondAttribute="centerY" constant="0.5" id="qAk-Pe-kG3"/>
+                            <constraint firstAttribute="centerX" secondItem="mnb-ie-hyi" secondAttribute="centerX" id="wD5-oI-fH9"/>
+                        </constraints>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="300" height="400"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3gU-Vt-Ntt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1042" y="420"/>
+        </scene>
+        <!--Page 2-->
+        <scene sceneID="Ch3-hQ-EnC">
+            <objects>
+                <viewController storyboardIdentifier="Page2ViewController" title="Page 2" id="Stl-V4-KTe" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Igw-08-7ff"/>
+                        <viewControllerLayoutGuide type="bottom" id="38i-SM-IEw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fRb-PW-EP0">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="400"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Page 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Wu-HP-P8v">
+                                <rect key="frame" x="116" y="186" width="68" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.40000000000000002" green="0.80000000000000004" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="6Wu-HP-P8v" secondAttribute="centerY" constant="0.5" id="1aG-9i-aig"/>
+                            <constraint firstAttribute="centerX" secondItem="6Wu-HP-P8v" secondAttribute="centerX" id="MQ5-dT-B4j"/>
+                        </constraints>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="300" height="400"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tz0-Fc-AtX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1376" y="420"/>
+        </scene>
+        <!--Page 3-->
+        <scene sceneID="YPC-N1-hQz">
+            <objects>
+                <viewController storyboardIdentifier="Page3ViewController" title="Page 3" id="ZEY-ll-Tyr" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hkK-d1-jbI"/>
+                        <viewControllerLayoutGuide type="bottom" id="FON-L7-Ri9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2uf-dm-JXB">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="400"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Page 3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VvI-Kr-KcP">
+                                <rect key="frame" x="116" y="186" width="68" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="VvI-Kr-KcP" secondAttribute="centerX" id="3f5-0n-CZK"/>
+                            <constraint firstAttribute="centerY" secondItem="VvI-Kr-KcP" secondAttribute="centerY" constant="0.5" id="NAf-8b-KO3"/>
+                        </constraints>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="300" height="400"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ach-Nq-WHv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1706" y="420"/>
         </scene>
     </scenes>
 </document>
